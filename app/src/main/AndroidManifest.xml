@@ -33,7 +33,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInScreen">
+        <activity android:name=".InitialProfileSetupScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PhoneVerificationScreen" />
-        <activity android:name=".InitialProfileSetupScreen"></activity>
+        <activity android:name=".SignInScreen"></activity>
     </application>
 
 </manifest>
