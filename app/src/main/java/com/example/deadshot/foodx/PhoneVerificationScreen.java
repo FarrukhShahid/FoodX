@@ -78,40 +78,40 @@ public class PhoneVerificationScreen extends AppCompatActivity {
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ConfirmationNumber.getText().toString().equals(intent.getStringExtra("RANDOM_NUMBER"))) {
+            if (ConfirmationNumber.getText().toString().equals(intent.getStringExtra("RANDOM_NUMBER"))) {
 
-                    //A file will be created with the name of the Application Title with the Text LoginSuccess
-                    String FILE_NAME = getResources().getString(R.string.app_name);
-                    String txt = "LoginSuccess";
-                    FileOutputStream outputStream = null;
-                    File file = new File(FILE_NAME);
+                //A file will be created with the name of the Application Title with the Text LoginSuccess
+                String FILE_NAME = getResources().getString(R.string.app_name);
+                String txt = "LoginSuccess";
+                FileOutputStream outputStream = null;
+                File file = new File(FILE_NAME);
 
-                    //For Writing the File
+                //For Writing the File
+                try {
+                    outputStream = openFileOutput(FILE_NAME, MODE_PRIVATE);
+                    outputStream.write(txt.getBytes());
+
+                    //Can remove this toast
+                    Toast.makeText(getApplicationContext(), "File Created", Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    //Can remove this toast
+                    Toast.makeText(getApplicationContext(), "File Not Created", Toast.LENGTH_SHORT).show();
+                } finally {
                     try {
-                        outputStream = openFileOutput(FILE_NAME, MODE_PRIVATE);
-                        outputStream.write(txt.getBytes());
-
-                        //Can remove this toast
-                        Toast.makeText(getApplicationContext(), "File Created", Toast.LENGTH_SHORT).show();
+                        outputStream.close();
                     } catch (IOException e) {
                         //Can remove this toast
-                        Toast.makeText(getApplicationContext(), "File Not Created", Toast.LENGTH_SHORT).show();
-                    } finally {
-                        try {
-                            outputStream.close();
-                        } catch (IOException e) {
-                            //Can remove this toast
-                            Toast.makeText(getApplicationContext(), "File Not Closed", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(getApplicationContext(), "File Not Closed", Toast.LENGTH_SHORT).show();
                     }
+                }
 
-                    //This will change the screen if the user enters correct Random Number
-                    Intent myIntent = new Intent(getApplicationContext(), InitialProfileSetupScreen.class);
-                    startActivity(myIntent);
-                }
-                else {  //This part of the code will be executed when the user enters wrong code
-                    Toast.makeText(getApplicationContext(), "Number entered was wrong. Please Try Again!", Toast.LENGTH_SHORT).show();
-                }
+                //This will change the screen if the user enters correct Random Number
+                Intent myIntent = new Intent(getApplicationContext(), InitialProfileSetupScreen.class);
+                startActivity(myIntent);
+            }
+            else {  //This part of the code will be executed when the user enters wrong code
+                Toast.makeText(getApplicationContext(), "Number entered was wrong. Please Try Again!", Toast.LENGTH_SHORT).show();
+            }
             }
         });
     }

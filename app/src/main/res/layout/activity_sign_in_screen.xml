@@ -3,65 +3,57 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="25sp"
+        android:id="@+id/txtView"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/com_facebook_profile_picture_blank_portrait" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Your Phone"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:textSize="25dp"
-            android:id="@+id/txtView"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center"
-            android:gravity="center">
-
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/ccp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:ccp_countryPreference="pk,usa"
-                app:ccp_hintExampleNumber="true"
-                app:ccp_autoDetectCountry="true"
-                app:ccpDialog_keyboardAutoPopup="true"
-                android:layout_marginLeft="20dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingRight="40dp">
-                <EditText
-                    android:id="@+id/editText_carrierNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:hint="phone"
-                    android:inputType="phone"
-                    android:singleLine="true" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <Button
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center"
-            android:id="@+id/checkNumButton"
-            android:text="Let's Go"/>
+            />
 
+        <EditText
+            android:id="@+id/editText_carrierNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="phone"
+            android:inputType="phone"
+            android:singleLine="true"
+            />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/checkNumButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:background="#fd3e39"
+        android:text="Let's Go"
+        android:textColor="#fff" />
 </LinearLayout>
