@@ -88,96 +88,96 @@ public class SignInScreen extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in_screen);
 
         //Needed for sending Verification SMS
-        mContext = getApplicationContext();
-
-        printHashKey(mContext);
-        //Getting all the permissions required
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_NUMBERS}, 1);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, 1);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
-
-        //Getting the number of the user if possible i.e., if SIM shares it with us
-        String number = getMyPhoneNO();
-
-        //Initializing the Country Picker
-        ccp = findViewById(R.id.ccp);
-        final EditText editTextCarrierNumber = findViewById(R.id.editText_carrierNumber);
-
-        //Setting the Edit Text to be associated with the country picker so that country picker can get the phone number as well as the country code
-        ccp.registerCarrierNumberEditText(editTextCarrierNumber);
-
-        //So that it can be used in the onClick method
-        final CountryCodePicker forButton = ccp;
-
-        //To check if we got the Phone number from Sim or not
-        final boolean numFound;
-
-        if(number.isEmpty()){
-            numFound = false;
-        }
-        else{   //Will have to check this as this part of the code is never executed
-            Toast.makeText(getApplicationContext(), "Your Phone Number is: "
-                    +number, Toast.LENGTH_SHORT).show();
-            ccp.setFullNumber(number);
-            editTextCarrierNumber.setText(number);
-            numFound = true;
-            mTo = number;
-        }
-
-        //Initializing the Let's Go Button and setting onClick functionality
-        checkNumButton = findViewById(R.id.checkNumButton);
-        checkNumButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //CountryCode gives us something like PK;92;Pakistan so spliting the string to get only the code .i.e., 92
-                String[] splitted= forButton.getSelectedCountryCode().split(":");
-
-                //Adding + sign to the country code so that the phone number becomes valid
-                forButton.setFullNumber("+" + splitted[0] + editTextCarrierNumber.getText().toString());
-
-                //For Debugging purpose only
-                Log.d ("Number: ", forButton.getFullNumberWithPlus());
-
-                if(!numFound)
-                    mTo = forButton.getFullNumberWithPlus();
-
-                //Checking the validity of the phone number by checking it's Length
-                if (forButton.isValidFullNumber()){
-                    //Initializing the server to send the SMS
-                    post(mContext.getString(R.string.host_name), new Callback() {
-
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        //If the msg is successfully recieved by the server .i.e., the 6 digit code which the server is supposed to send then onResponse method is called
-                        @Override
-                        public void onResponse(Call call, Response response) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    //This function is called when the SMS is successfully sent
-                                    Toast.makeText(getApplicationContext(), "SMS Sent!", Toast.LENGTH_SHORT).show();
-
-                                    //Taking the user to the next screen to enter the verification code
-                                    Intent i = new Intent(SignInScreen.this, PhoneVerificationScreen.class);
-                                    i.putExtra("PHONE_NUMBER", mTo);
-                                    i.putExtra("RANDOM_NUMBER", mBody);
-                                    startActivity(i);
-                                }
-                            });
-                        }
-                    });
-
-                }
-                else{   //This will be executed if the given number by the user is not valid
-                    Toast.makeText(getApplicationContext(), "Number not Valid! Please Try Again", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        mContext = getApplicationContext();
+//
+//        printHashKey(mContext);
+//        //Getting all the permissions required
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_NUMBERS}, 1);
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, 1);
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
+//
+//        //Getting the number of the user if possible i.e., if SIM shares it with us
+//        String number = getMyPhoneNO();
+//
+//        //Initializing the Country Picker
+//        ccp = findViewById(R.id.ccp);
+//        final EditText editTextCarrierNumber = findViewById(R.id.editText_carrierNumber);
+//
+//        //Setting the Edit Text to be associated with the country picker so that country picker can get the phone number as well as the country code
+//        ccp.registerCarrierNumberEditText(editTextCarrierNumber);
+//
+//        //So that it can be used in the onClick method
+//        final CountryCodePicker forButton = ccp;
+//
+//        //To check if we got the Phone number from Sim or not
+//        final boolean numFound;
+//
+//        if(number.isEmpty()){
+//            numFound = false;
+//        }
+//        else{   //Will have to check this as this part of the code is never executed
+//            Toast.makeText(getApplicationContext(), "Your Phone Number is: "
+//                    +number, Toast.LENGTH_SHORT).show();
+//            ccp.setFullNumber(number);
+//            editTextCarrierNumber.setText(number);
+//            numFound = true;
+//            mTo = number;
+//        }
+//
+//        //Initializing the Let's Go Button and setting onClick functionality
+//        checkNumButton = findViewById(R.id.checkNumButton);
+//        checkNumButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                //CountryCode gives us something like PK;92;Pakistan so spliting the string to get only the code .i.e., 92
+//                String[] splitted= forButton.getSelectedCountryCode().split(":");
+//
+//                //Adding + sign to the country code so that the phone number becomes valid
+//                forButton.setFullNumber("+" + splitted[0] + editTextCarrierNumber.getText().toString());
+//
+//                //For Debugging purpose only
+//                Log.d ("Number: ", forButton.getFullNumberWithPlus());
+//
+//                if(!numFound)
+//                    mTo = forButton.getFullNumberWithPlus();
+//
+//                //Checking the validity of the phone number by checking it's Length
+//                if (forButton.isValidFullNumber()){
+//                    //Initializing the server to send the SMS
+//                    post(mContext.getString(R.string.host_name), new Callback() {
+//
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        //If the msg is successfully recieved by the server .i.e., the 6 digit code which the server is supposed to send then onResponse method is called
+//                        @Override
+//                        public void onResponse(Call call, Response response) {
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    //This function is called when the SMS is successfully sent
+//                                    Toast.makeText(getApplicationContext(), "SMS Sent!", Toast.LENGTH_SHORT).show();
+//
+//                                    //Taking the user to the next screen to enter the verification code
+//                                    Intent i = new Intent(SignInScreen.this, PhoneVerificationScreen.class);
+//                                    i.putExtra("PHONE_NUMBER", mTo);
+//                                    i.putExtra("RANDOM_NUMBER", mBody);
+//                                    startActivity(i);
+//                                }
+//                            });
+//                        }
+//                    });
+//
+//                }
+//                else{   //This will be executed if the given number by the user is not valid
+//                    Toast.makeText(getApplicationContext(), "Number not Valid! Please Try Again", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
     //This function is called when the SIM allows to share the number

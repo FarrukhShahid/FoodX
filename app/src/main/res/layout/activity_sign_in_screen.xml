@@ -6,54 +6,61 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:textStyle="bold"
-        android:gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="25sp"
-        android:id="@+id/txtView"/>
+        android:id="@+id/txtView"
+        android:layout_gravity="center"/>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:gravity="center">-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/com_facebook_profile_picture_blank_portrait" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_layouts"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:elevation="5dp">
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/ccp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"/>
 
-        <EditText
-            android:id="@+id/editText_carrierNumber"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_signin_phone_number_widget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="phone"
-            android:inputType="phone"
-            android:singleLine="true"
-            />
-    </LinearLayout>
+            android:layout_margin="20dp"
+            android:theme="@style/TextLabel">
 
-    <Button
-        android:id="@+id/checkNumButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="40dp"
-        android:background="#fd3e39"
-        android:text="Let's Go"
-        android:textColor="#fff" />
+            <AutoCompleteTextView
+                android:id="@+id/editText_carrierNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="phone"
+                android:inputType="phone"
+                android:singleLine="true"/>
+
+        </android.support.design.widget.TextInputLayout>
+        <Button
+            android:id="@+id/checkNumButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@drawable/button_style"
+            android:text="@string/LoginButton"
+            android:textColor="#000000" />
+        <!--</LinearLayout>-->
+    </LinearLayout>
 </LinearLayout>
