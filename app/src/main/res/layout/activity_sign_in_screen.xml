@@ -3,22 +3,26 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white_grayish"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
+        android:text="Your Phone Number"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:textSize="25sp"
+        android:textSize="24sp"
         android:id="@+id/txtView"
-        android:layout_gravity="center"/>
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="vertical"-->
-        <!--android:gravity="center">-->
+        android:layout_gravity="center"
+        android:textColor="@color/dark_blue"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/dark_blue">
 
         <LinearLayout
             android:layout_width="350dp"
@@ -31,10 +35,15 @@
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/ccp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:ccp_countryPreference="pk,usa"
+            app:ccp_hintExampleNumber="true"
+            app:ccp_autoDetectCountry="true"
+            app:ccpDialog_keyboardAutoPopup="true"
             android:layout_gravity="right"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/activity_signin_phone_number_widget"
@@ -47,7 +56,7 @@
                 android:id="@+id/editText_carrierNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="phone"
+                android:hint="Phone Number"
                 android:inputType="phone"
                 android:singleLine="true"/>
 
@@ -58,9 +67,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@drawable/button_style"
-            android:text="@string/LoginButton"
-            android:textColor="#000000" />
-        <!--</LinearLayout>-->
+            android:backgroundTint="@color/Red"
+            android:text="@string/login_button"
+            android:textColor="@color/windowBackground"
+            android:elevation="10dp"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
