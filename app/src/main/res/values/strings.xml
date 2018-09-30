@@ -21,4 +21,13 @@
 
     <!--Login Screen-->
     <string name="login_button">Login</string>
+    <string name="login_instructions">Please confirm your country and enter your phone number</string>
+
+    <!--Verification Screen-->
+    <string name="verify_button">Verify</string>
+    <string name="title_activity_main_maps">Map</string>
+
+    <!--Maps Activity Screen-->
+    <string name="GoogleMapsAPIKey">AIzaSyBgjC-PpCs_WxhZLyIt_vTeQlSX5kGy374</string>
+
 </resources>

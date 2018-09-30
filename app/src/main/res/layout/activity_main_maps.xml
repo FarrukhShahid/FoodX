@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMapsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:elevation="5dp"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_layouts_2"
+        android:id="@+id/SearchTextViewLayout">
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/Red"
+            android:background="@drawable/three_lines_button"
+            android:focusable="true"
+            android:onClick="NavigationDrawerButtonClick"
+            android:focusableInTouchMode="true"/>
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Try Resturants, coffee"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:inputType="textAutoComplete"
+            android:singleLine="true"
+            android:textSize="16dp"
+            android:background="@null"
+            android:id="@+id/LocationSearchTextBox"
+            />
+
+    </LinearLayout>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

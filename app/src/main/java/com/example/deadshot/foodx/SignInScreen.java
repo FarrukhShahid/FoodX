@@ -54,6 +54,8 @@ public class SignInScreen extends AppCompatActivity {
     private OkHttpClient mClient = new OkHttpClient();
     private Context mContext;
 
+    public static boolean check = false;
+
     //This function is called to send the verification
     // SMS where "num" is the number on which the msg
     // is sent and "mBody" is the verification code
@@ -130,7 +132,11 @@ public class SignInScreen extends AppCompatActivity {
         checkNumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(SignInScreen.this, PhoneVerificationScreen.class);
+                if (!check) {
+                    startActivity(i);
+                    return;
+                }
                 //CountryCode gives us something like PK;92;Pakistan so spliting the string to get only the code .i.e., 92
                 String[] splitted= forButton.getSelectedCountryCode().split(":");
 

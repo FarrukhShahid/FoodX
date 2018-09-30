@@ -78,6 +78,10 @@ public class PhoneVerificationScreen extends AppCompatActivity {
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            startActivity(new Intent(getApplicationContext(),MainMapsActivity.class));
+            if (!SignInScreen.check){
+                return;
+            }
             if (ConfirmationNumber.getText().toString().equals(intent.getStringExtra("RANDOM_NUMBER"))) {
 
                 //A file will be created with the name of the Application Title with the Text LoginSuccess
