@@ -54,17 +54,15 @@ public class SignInScreen extends AppCompatActivity {
     private OkHttpClient mClient = new OkHttpClient();
     private Context mContext;
 
-    //This function is called to send the verification SMS where "num" is the number on which the msg is sent and "mBody" is the verification code
+    public static boolean check = false;
+
+    //This function is called to send the verification
+    // SMS where "num" is the number on which the msg
+    // is sent and "mBody" is the verification code
     Call post(String url, Callback callback) {
         String num = mTo.toString();
-        RequestBody formBody = new FormBody.Builder()
-                .add("To", num)
-                .add("Body", mBody)
-                .build();
-        Request request = new Request.Builder()
-                .url(url)
-                .post(formBody)
-                .build();
+        RequestBody formBody = new FormBody.Builder().add("To", num).add("Body", mBody).build();
+        Request request = new Request.Builder().url(url).post(formBody).build();
         Call response = mClient.newCall(request);
         response.enqueue(callback);
         return response;
@@ -96,17 +94,13 @@ public class SignInScreen extends AppCompatActivity {
 
         printHashKey(mContext);
         //Getting all the permissions required
-        ActivityCompat.requestPermissions(this, new String[]
-                {Manifest.permission.READ_PHONE_STATE}, 1);
-        ActivityCompat.requestPermissions(this, new String[]
-                {Manifest.permission.READ_PHONE_NUMBERS}, 1);
-        ActivityCompat.requestPermissions(this, new String[]
-                {Manifest.permission.READ_SMS}, 1);
-        ActivityCompat.requestPermissions(this, new String[]
-                {Manifest.permission.INTERNET}, 1);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_NUMBERS}, 1);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, 1);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
 
         //Getting the number of the user if possible i.e., if SIM shares it with us
-        String number =getMyPhoneNO();
+        String number = getMyPhoneNO();
 
         //Initializing the Country Picker
         ccp = findViewById(R.id.ccp);
@@ -138,7 +132,11 @@ public class SignInScreen extends AppCompatActivity {
         checkNumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(SignInScreen.this, PhoneVerificationScreen.class);
+                if (!check) {
+                    startActivity(i);
+                    return;
+                }
                 //CountryCode gives us something like PK;92;Pakistan so spliting the string to get only the code .i.e., 92
                 String[] splitted= forButton.getSelectedCountryCode().split(":");
 
@@ -191,10 +189,11 @@ public class SignInScreen extends AppCompatActivity {
     //This function is called when the SIM allows to share the number
     private String getMyPhoneNO() {
         TelephonyManager mTelephonyMgr;
-        mTelephonyMgr = (TelephonyManager) getSystemService
-                (Context.TELEPHONY_SERVICE);
+        mTelephonyMgr = (TelephonyManager) getSystemService (Context.TELEPHONY_SERVICE);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding

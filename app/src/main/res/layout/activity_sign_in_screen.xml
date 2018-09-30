@@ -1,67 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
-    <LinearLayout
-        android:layout_width="match_parent"
+    android:background="@color/white_grayish">
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Your Phone Number"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:id="@+id/txtView"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/dark_blue"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txtView"
+        android:background="@color/dark_blue">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Phone"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:textSize="25dp"
-            android:id="@+id/txtView"/>
-
+            android:text="@string/login_instructions"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/windowBackground"
+            />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_layouts"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:elevation="5dp">
 
             <com.hbb20.CountryCodePicker
                 android:id="@+id/ccp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:ccp_countryPreference="pk,usa"
                 app:ccp_hintExampleNumber="true"
                 app:ccp_autoDetectCountry="true"
                 app:ccpDialog_keyboardAutoPopup="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"/>
 
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/activity_signin_phone_number_widget"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingRight="40dp">
-                <EditText
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:theme="@style/TextLabel">
+
+                <AutoCompleteTextView
                     android:id="@+id/editText_carrierNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:hint="phone"
+                    android:hint="Phone Number"
                     android:inputType="phone"
-                    android:singleLine="true" />
-            </LinearLayout>
+                    android:singleLine="true"/>
 
+            </android.support.design.widget.TextInputLayout>
+            <Button
+                android:id="@+id/checkNumButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/Red"
+                android:text="@string/login_button"
+                android:textColor="@color/windowBackground"
+                android:elevation="10dp"/>
         </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center"
-            android:id="@+id/checkNumButton"
-            android:text="Let's Go"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
