@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center|top"
+        android:gravity="center|top">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Verification"
+        android:textAllCaps="true"
+        android:layout_marginTop="20dp"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/ConfirmationText"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="50dp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+    <EditText
+        android:id="@+id/ConfirmationNumber"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_gray_light"
+        android:ems="10"
+        android:hint="******"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:maxLength="6"
+        android:singleLine="true"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/GetStarted_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Started"
+            android:background="@drawable/button_style"
+            android:layout_marginTop="40dp"/>
+    </LinearLayout>
+</LinearLayout>
