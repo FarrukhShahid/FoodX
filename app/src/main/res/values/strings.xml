@@ -19,6 +19,12 @@
     <string name="sign_out">Sign Out</string>
     <string name="disconnect">Disconnect</string>
 
+    <!--Get Started Screen-->
+    <string name="getStartedButton">Get Started</string>
+    <string name="getStarted_instructions">
+        The Application will require Permissions as follow\n - Location\n - Send SMS\n - Phone Number
+    </string>
+
     <!--Login Screen-->
     <string name="login_button">Login</string>
     <string name="login_instructions">Please confirm your country and enter your phone number</string>
@@ -26,6 +32,9 @@
     <!--Verification Screen-->
     <string name="verify_button">Verify</string>
     <string name="title_activity_main_maps">Map</string>
+    <string name="sending_code">Sending the Code to the following number. If this is not your Phone Number then </string>
+    <string name="sent_code">We have sent a message containing a 6-digit code to </string>
+    <string name="edit_phone_number_link">Click here</string>
 
     <!--Maps Activity Screen-->
     <string name="GoogleMapsAPIKey">AIzaSyBgjC-PpCs_WxhZLyIt_vTeQlSX5kGy374</string>

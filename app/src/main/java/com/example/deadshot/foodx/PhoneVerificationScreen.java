@@ -11,7 +11,9 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,19 +22,51 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class PhoneVerificationScreen extends AppCompatActivity {
 
+    private TextView Number_TextView = null;
+    private TextView textView = null;
+    private AutoCompleteTextView ConfirmationText = null;
+
+    private OkHttpClient mClient = null;
+    private String PhoneNumber = null;
+    private String VerificationCode = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_verification_screen);
 
+        if(!SignInScreen.check)
+            return;
+
+        Random rand = new Random();
+        VerificationCode = String.valueOf(rand.nextInt(999999) + 100000);
+        mClient = new OkHttpClient();
+
+        Number_TextView = findViewById(R.id.Verification_activity_PhoneNumber_TextView);
+        ConfirmationText = findViewById(R.id.ConfirmationNumber);
         //For Getting the items sent from previous activity
         final Intent intent = getIntent();
 
-        //This is the dynamic text which is shown below the heading
-        SpannableString ss = new SpannableString("We have sent a message containing a 6-digit code to " + intent.getStringExtra("PHONE_NUMBER") + ". If this is not your Phone Number then Click Here.");
+        Bundle previous_data = getIntent().getExtras();
+        PhoneNumber = previous_data.getString("PhoneNumber");
+        Number_TextView.setText(PhoneNumber);
+
+        final String sendingstr = getString(R.string.sending_code);
+        final String linkstr = getString(R.string.edit_phone_number_link);
+        final String sentstr = getString(R.string.sent_code);
+
+        SpannableString ss = new SpannableString(sendingstr+linkstr);
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View textView) {
@@ -46,77 +80,79 @@ public class PhoneVerificationScreen extends AppCompatActivity {
             }
         };
 
-        //This will make the "Phone Number" BOLD as well as the text "CLICK HERE" a HYPERLINK
-
-        int ClickFrom = 0;
-        int PhoneFrom = 0;
-        int PhoneTill = 0;
-        for(int i = 0; i < ss.length() ;i++){   //Making it generic to find Click Here and the Number to make them separate from the text
-            if(ss.charAt(i) == 'C' && ss.charAt(i+1) == 'l' && ss.charAt(i+2) == 'i' && ss.charAt(i+3) == 'c' && ss.charAt(i+4) == 'k')
-                ClickFrom = i;
-            if(ss.charAt(i) == '+' && ss.charAt(i+1) == '9' && ss.charAt(i+2) =='2')
-                PhoneFrom = i;
-            if(i < ss.length() - 3 && ss.charAt(i) == '.' && ss.charAt(i+1) == ' ' && ss.charAt(i+2) == 'I' && ss.charAt(i+3) == 'f')
-                PhoneTill = i;
-        }
-        final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD);
         final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC);
-        ss.setSpan(bss, PhoneFrom, PhoneTill, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-        ss.setSpan(iss, ClickFrom, ClickFrom + 10, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-        ss.setSpan(clickableSpan, ClickFrom, ClickFrom + 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        ss.setSpan(new UnderlineSpan(), ClickFrom, ClickFrom + 10, 0);
+        ss.setSpan(iss, sendingstr.length(), sendingstr.length() + linkstr.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        ss.setSpan(clickableSpan, sendingstr.length(), sendingstr.length() + linkstr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(new UnderlineSpan(), sendingstr.length(), sendingstr.length() + linkstr.length(), 0);
 
-        //Adding the lines to the Text View already present in the xml
-        TextView textView = (TextView) findViewById(R.id.ConfirmationText);
+        textView = (TextView) findViewById(R.id.ConfirmationText);
         textView.setText(ss);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
-        textView.setHighlightColor(Color.TRANSPARENT);
 
-        final EditText ConfirmationNumber = (EditText)findViewById(R.id.ConfirmationNumber);
 
-        Button LogIn = (Button) findViewById(R.id.GetStarted_Button);
-        LogIn.setOnClickListener(new View.OnClickListener() {
+        post(getApplicationContext().getString(R.string.host_name), new Callback() {
+
             @Override
-            public void onClick(View view) {
-            startActivity(new Intent(getApplicationContext(),MainMapsActivity.class));
-            if (!SignInScreen.check){
-                return;
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
             }
-            if (ConfirmationNumber.getText().toString().equals(intent.getStringExtra("RANDOM_NUMBER"))) {
 
-                //A file will be created with the name of the Application Title with the Text LoginSuccess
-                String FILE_NAME = getResources().getString(R.string.app_name);
-                String txt = "LoginSuccess";
-                FileOutputStream outputStream = null;
-                File file = new File(FILE_NAME);
+            //If the msg is successfully recieved by the server .i.e., the 6 digit code which the server is supposed to send then onResponse method is called
+            @Override
+            public void onResponse(Call call, Response response) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //This function is called when the SMS is successfully sent
+                        Toast.makeText(getApplicationContext(), "SMS Sent!", Toast.LENGTH_SHORT).show();
+                        Log.d("SMS->>>", VerificationCode.toString());
+                        //Taking the user to the next screen to enter the verification code
+                        SpannableString ss = new SpannableString(sentstr+linkstr);
+                        ClickableSpan clickableSpan = new ClickableSpan() {
+                            @Override
+                            public void onClick(View textView) {
+                                //If "Click here" is pressed then it will take the user to the activity given below
+                                startActivity(new Intent(getApplicationContext(), SignInScreen.class));
+                            }
+                            @Override
+                            public void updateDrawState(TextPaint ds) {
+                                super.updateDrawState(ds);
+                                ds.setUnderlineText(false);
+                            }
+                        };
 
-                //For Writing the File
-                try {
-                    outputStream = openFileOutput(FILE_NAME, MODE_PRIVATE);
-                    outputStream.write(txt.getBytes());
+                        final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC);
+                        ss.setSpan(iss, sentstr.length(), sentstr.length() + linkstr.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                        ss.setSpan(clickableSpan, sentstr.length(), sentstr.length() + linkstr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        ss.setSpan(new UnderlineSpan(), sentstr.length(), sentstr.length() + linkstr.length(), 0);
 
-                    //Can remove this toast
-                    Toast.makeText(getApplicationContext(), "File Created", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    //Can remove this toast
-                    Toast.makeText(getApplicationContext(), "File Not Created", Toast.LENGTH_SHORT).show();
-                } finally {
-                    try {
-                        outputStream.close();
-                    } catch (IOException e) {
-                        //Can remove this toast
-                        Toast.makeText(getApplicationContext(), "File Not Closed", Toast.LENGTH_SHORT).show();
+                        textView = (TextView) findViewById(R.id.ConfirmationText);
+                        textView.setText(ss);
+                        textView.setMovementMethod(LinkMovementMethod.getInstance());
                     }
-                }
-
-                //This will change the screen if the user enters correct Random Number
-                Intent myIntent = new Intent(getApplicationContext(), InitialProfileSetupScreen.class);
-                startActivity(myIntent);
-            }
-            else {  //This part of the code will be executed when the user enters wrong code
-                Toast.makeText(getApplicationContext(), "Number entered was wrong. Please Try Again!", Toast.LENGTH_SHORT).show();
-            }
+                });
             }
         });
+    }
+    //This function is called to send the verification
+    // SMS where "num" is the number on which the msg
+    // is sent and "mBody" is the verification code
+    Call post(String url, Callback callback) {
+        String num = PhoneNumber.toString();
+        RequestBody formBody = new FormBody.Builder().add("To", num).add("Body", VerificationCode).build();
+        Request request = new Request.Builder().url(url).post(formBody).build();
+        Call response = mClient.newCall(request);
+        response.enqueue(callback);
+        return response;
+    }
+    public void Verify_code(View v){
+        if (!SignInScreen.check){
+            startActivity(new Intent(getApplicationContext(),MainMapsActivity.class));
+            return;
+        }
+        Log.d("Verify Button->>",ConfirmationText.getText().toString()+":"+VerificationCode);
+        if(ConfirmationText.getText().toString().equals(VerificationCode)){
+            startActivity(new Intent(getApplicationContext(),MainMapsActivity.class));
+        }
     }
 }

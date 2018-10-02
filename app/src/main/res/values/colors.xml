@@ -9,7 +9,7 @@
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
 
-    <!--Base Colors-->
+    <!--Base Colors Kindly do not update or write anything below this line. Farrukh-->
     <color name="light_blue">#9CE7D8</color>
     <color name="dark_blue">#1FC1B1</color>
     <color name="Red">#FD3E39</color>
