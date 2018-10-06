@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/dark_blue"
+    android:padding="20dp"
+    android:elevation="50dp"
+    android:gravity="bottom">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/cheficon"
+        android:onClick="ProfileViewClick"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Farrukh"
+            android:textSize="24sp"
+            android:id="@+id/Name"
+            android:textColor="@color/windowBackground"
+            android:onClick="ProfileViewClick"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.62"
+            android:layout_below="@id/Name"
+            android:id="@+id/Rating"
+            android:textSize="18sp"
+            android:textColor="@color/windowBackground"
+            android:onClick="ProfileViewClick"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@id/Rating"
+            android:layout_below="@id/Name"
+            android:src="@android:drawable/btn_star_big_on" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -22,7 +22,6 @@ public class SignInScreen extends AppCompatActivity {
     private Button LoginButton;
     private String mTo;
 
-
     public static boolean check = false;
 
     private EditText editTextCarrierNumber = null;
@@ -50,21 +49,21 @@ public class SignInScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (!check) {
-                    Intent i = new Intent(SignInScreen.this, PhoneVerificationScreen.class);
-                    startActivity(i);
-                    return;
-                }
-                String code = forButton.getSelectedCountryCode();
-                Log.d("phone number ->>", forButton.getSelectedCountryCode().toString());
-                mTo = "+" + code + editTextCarrierNumber.getText().toString();
-                forButton.setFullNumber(mTo);
-                Log.d("P_no with plus", forButton.getFullNumberWithPlus());
-                if (forButton.isValidFullNumber()) {
-                    Intent i = new Intent(getApplicationContext(), PhoneVerificationScreen.class);
-                    i.putExtra("PhoneNumber", mTo);
-                    startActivity(i);
-                }
+            if (!check) {
+                Intent i = new Intent(SignInScreen.this, PhoneVerificationScreen.class);
+                startActivity(i);
+                return;
+            }
+            String code = forButton.getSelectedCountryCode();
+            Log.d("phone number ->>", forButton.getSelectedCountryCode().toString());
+            mTo = "+" + code + editTextCarrierNumber.getText().toString();
+            forButton.setFullNumber(mTo);
+            Log.d("P_no with plus", forButton.getFullNumberWithPlus());
+            if (forButton.isValidFullNumber()) {
+                Intent i = new Intent(getApplicationContext(), PhoneVerificationScreen.class);
+                i.putExtra("PhoneNumber", mTo);
+                startActivity(i);
+            }
             }
         });
     }
