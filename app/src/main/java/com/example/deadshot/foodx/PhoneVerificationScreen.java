@@ -103,32 +103,32 @@ public class PhoneVerificationScreen extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //This function is called when the SMS is successfully sent
-                        Toast.makeText(getApplicationContext(), "SMS Sent!", Toast.LENGTH_SHORT).show();
-                        Log.d("SMS->>>", VerificationCode.toString());
-                        //Taking the user to the next screen to enter the verification code
-                        SpannableString ss = new SpannableString(sentstr+linkstr);
-                        ClickableSpan clickableSpan = new ClickableSpan() {
-                            @Override
-                            public void onClick(View textView) {
-                                //If "Click here" is pressed then it will take the user to the activity given below
-                                startActivity(new Intent(getApplicationContext(), SignInScreen.class));
-                            }
-                            @Override
-                            public void updateDrawState(TextPaint ds) {
-                                super.updateDrawState(ds);
-                                ds.setUnderlineText(false);
-                            }
-                        };
+                    //This function is called when the SMS is successfully sent
+                    Toast.makeText(getApplicationContext(), "SMS Sent!", Toast.LENGTH_SHORT).show();
+                    Log.d("SMS->>>", VerificationCode.toString());
+                    //Taking the user to the next screen to enter the verification code
+                    SpannableString ss = new SpannableString(sentstr+linkstr);
+                    ClickableSpan clickableSpan = new ClickableSpan() {
+                        @Override
+                        public void onClick(View textView) {
+                            //If "Click here" is pressed then it will take the user to the activity given below
+                            startActivity(new Intent(getApplicationContext(), SignInScreen.class));
+                        }
+                        @Override
+                        public void updateDrawState(TextPaint ds) {
+                            super.updateDrawState(ds);
+                            ds.setUnderlineText(false);
+                        }
+                    };
 
-                        final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC);
-                        ss.setSpan(iss, sentstr.length(), sentstr.length() + linkstr.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-                        ss.setSpan(clickableSpan, sentstr.length(), sentstr.length() + linkstr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        ss.setSpan(new UnderlineSpan(), sentstr.length(), sentstr.length() + linkstr.length(), 0);
+                    final StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC);
+                    ss.setSpan(iss, sentstr.length(), sentstr.length() + linkstr.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                    ss.setSpan(clickableSpan, sentstr.length(), sentstr.length() + linkstr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(new UnderlineSpan(), sentstr.length(), sentstr.length() + linkstr.length(), 0);
 
-                        textView = (TextView) findViewById(R.id.ConfirmationText);
-                        textView.setText(ss);
-                        textView.setMovementMethod(LinkMovementMethod.getInstance());
+                    textView = (TextView) findViewById(R.id.ConfirmationText);
+                    textView.setText(ss);
+                    textView.setMovementMethod(LinkMovementMethod.getInstance());
                     }
                 });
             }
