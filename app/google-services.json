@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "108528681937",
+    "firebase_url": "https://foodx2-2b8c1.firebaseio.com",
+    "project_id": "foodx2-2b8c1",
+    "storage_bucket": "foodx2-2b8c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108528681937:android:05f81f4f2c8958a9",
+        "android_client_info": {
+          "package_name": "com.example.deadshot.foodx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108528681937-8tonj9f0gt6scck07rrinc5bo1aj50kb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrHxOzAFlsmOedUl_yL5St4sH7DAiEUt0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

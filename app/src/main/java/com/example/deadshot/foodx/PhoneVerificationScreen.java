@@ -19,6 +19,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -152,6 +155,9 @@ public class PhoneVerificationScreen extends AppCompatActivity {
         }
         Log.d("Verify Button->>",ConfirmationText.getText().toString()+":"+VerificationCode);
         if(ConfirmationText.getText().toString().equals(VerificationCode)){
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = database.getReference();
+            databaseReference.child("root").push().setValue(PhoneNumber);
             startActivity(new Intent(getApplicationContext(),MainMapsActivity.class));
         }
     }
