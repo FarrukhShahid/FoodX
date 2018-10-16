@@ -10,9 +10,11 @@
     <color name="navigationBarColor">#000000</color>
 
     <!--Base Colors Kindly do not update or write anything below this line. Farrukh-->
-    <color name="light_blue">#9CE7D8</color>
-    <color name="dark_blue">#1FC1B1</color>
+    <color name="light_blue">#0AD8FB</color>
+    <color name="dark_blue">#0099F9</color>
     <color name="Red">#FD3E39</color>
     <color name="Dark_gray">#3E3E3E</color>
     <color name="white_grayish">#DADBDB</color>
+    <color name="pure_white">#FFFFFF</color>
+
 </resources>
