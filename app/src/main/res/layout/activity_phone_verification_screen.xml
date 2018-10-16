@@ -13,14 +13,14 @@
         android:layout_marginTop="20dp"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/light_blue"
         android:id="@+id/Verification_activity_top_text"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/Verification_activity_top_text"
-        android:background="@color/dark_blue">
+        android:background="@color/light_blue">
         <TextView
             android:id="@+id/ConfirmationText"
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ConfirmationNumber"
                 android:text="@string/verify_button"
-                android:backgroundTint="@color/Red"
+                android:backgroundTint="@color/dark_blue"
                 android:textColor="@color/windowBackground"
                 android:layout_marginRight="20dp"
                 android:layout_gravity="right"

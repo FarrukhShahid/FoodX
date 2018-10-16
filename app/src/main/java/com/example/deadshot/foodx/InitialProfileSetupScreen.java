@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,10 +54,13 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
     private GoogleSignInClient mGoogleSignInClient;
     ProfilePictureView profilePictureView;
     CallbackManager callbackManager;
-    private TextView userFacebookDetails;
+    //private TextView userFacebookDetails;
     LoginManager manager;
-    ImageView img;
-    private TextView userGoogleDetails;
+    private AutoCompleteTextView firstname;
+    private AutoCompleteTextView lastname;
+    private AutoCompleteTextView email;
+    //ImageView img;
+    //private TextView userGoogleDetails;
 
     public static String printKeyHash(Activity context) {
         PackageInfo packageInfo;
@@ -115,9 +119,13 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
         //Not sure why prefUtil was used.... will look into it
         profilePictureView = findViewById(R.id.friendProfilePicture);
         LoginButton loginButton = findViewById(R.id.login_button);
-        userFacebookDetails = findViewById(R.id.userDetails);
-        userGoogleDetails = findViewById(R.id.usergoogleDetails);
-        img = findViewById(R.id.googleProfileImage);
+        firstname=findViewById(R.id.editText_firstname);
+        lastname=findViewById(R.id.lasttname_editText);
+        email=findViewById(R.id.email_edittxt);
+        //userFacebookDetails = findViewById(R.id.userDetails);
+        //userGoogleDetails = findViewById(R.id.usergoogleDetails);
+        //img = findViewById(R.id.googleProfileImage);
+
 
         //This line takes permission from fb user to get his name and email and profile photo
         loginButton.setReadPermissions(Arrays.asList(
@@ -145,8 +153,11 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
 
                                         // Getting FB User Data
                                         Bundle facebookData = getFacebookData(jsonObject);
-
-                                        userFacebookDetails.setText(facebookData.getString("first_name") + " " + facebookData.getString("last_name") + "\n" + facebookData.getString("email"));
+                                        firstname.setText(facebookData.getString("first_name"));
+                                        Log.d("firstname-->",facebookData.getString("first_name"));
+                                        lastname.setText(facebookData.getString("last_name"));
+                                        email.setText(facebookData.getString("email"));
+                                        //userFacebookDetails.setText(facebookData.getString("first_name") + " " + facebookData.getString("last_name") + "\n" + facebookData.getString("email"));
                                     }
                                 });
                         Bundle parameters = new Bundle();
@@ -268,14 +279,14 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
     }
     private void updateUI(@Nullable GoogleSignInAccount account) {
         if (account != null) {
-            userGoogleDetails.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+            //userGoogleDetails.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
             String photo = account.getPhotoUrl().toString();
-            Glide.with(this).load(photo).into(img);
+            //Glide.with(this).load(photo).into(img);
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
-            userGoogleDetails.setText(R.string.signed_out);
+            //userGoogleDetails.setText(R.string.signed_out);
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);

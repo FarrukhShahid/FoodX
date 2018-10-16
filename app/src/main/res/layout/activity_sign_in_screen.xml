@@ -14,13 +14,13 @@
         android:textSize="24sp"
         android:id="@+id/txtView"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/dark_blue"/>
+        android:textColor="@color/light_blue"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txtView"
-        android:background="@color/dark_blue">
+        android:background="@color/light_blue">
 
         <TextView
             android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                android:backgroundTint="@color/Red"
+                android:backgroundTint="@color/dark_blue"
                 android:text="@string/login_button"
                 android:textColor="@color/windowBackground"
                 android:elevation="10dp"/>

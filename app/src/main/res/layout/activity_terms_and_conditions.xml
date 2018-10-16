@@ -14,14 +14,14 @@
         android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:textAlignment="center"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/light_blue"
         android:textSize="24sp"
         android:id="@+id/NewUser_TextView"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/NewUser_TextView"
-        android:background="@color/dark_blue">
+        android:background="@color/light_blue">
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,7 +48,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="FoodX"
                     android:textAlignment="center"
-                    android:textColor="@color/Red"
+                    android:textColor="@color/pure_white"
                     android:textSize="48sp"
                     android:textStyle="bold"
                     android:layout_below="@id/Chef_uncle"/>
@@ -87,7 +87,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/Red"
+            android:backgroundTint="@color/dark_blue"
             android:text="@string/getStartedButton"
             android:textColor="@color/windowBackground"
             android:id="@+id/GetStarted_Button"
