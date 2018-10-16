@@ -164,7 +164,7 @@
                 android:theme="@style/TextLabel">
 
                 <AutoCompleteTextView
-                    android:id="@+id/phone_number_edittxt"
+                    android:id="@+id/email_edittxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"/>

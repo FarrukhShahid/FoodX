@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,6 +56,9 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
     CallbackManager callbackManager;
     //private TextView userFacebookDetails;
     LoginManager manager;
+    private AutoCompleteTextView firstname;
+    private AutoCompleteTextView lastname;
+    private AutoCompleteTextView email;
     //ImageView img;
     //private TextView userGoogleDetails;
 
@@ -115,9 +119,13 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
         //Not sure why prefUtil was used.... will look into it
         profilePictureView = findViewById(R.id.friendProfilePicture);
         LoginButton loginButton = findViewById(R.id.login_button);
+        firstname=findViewById(R.id.editText_firstname);
+        lastname=findViewById(R.id.lasttname_editText);
+        email=findViewById(R.id.email_edittxt);
         //userFacebookDetails = findViewById(R.id.userDetails);
         //userGoogleDetails = findViewById(R.id.usergoogleDetails);
         //img = findViewById(R.id.googleProfileImage);
+
 
         //This line takes permission from fb user to get his name and email and profile photo
         loginButton.setReadPermissions(Arrays.asList(
@@ -145,7 +153,10 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
 
                                         // Getting FB User Data
                                         Bundle facebookData = getFacebookData(jsonObject);
-
+                                        firstname.setText(facebookData.getString("first_name"));
+                                        Log.d("firstname-->",facebookData.getString("first_name"));
+                                        lastname.setText(facebookData.getString("last_name"));
+                                        email.setText(facebookData.getString("email"));
                                         //userFacebookDetails.setText(facebookData.getString("first_name") + " " + facebookData.getString("last_name") + "\n" + facebookData.getString("email"));
                                     }
                                 });
