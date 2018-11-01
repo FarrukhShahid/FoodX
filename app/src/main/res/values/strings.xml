@@ -32,11 +32,14 @@
     <!--Verification Screen-->
     <string name="verify_button">Verify</string>
     <string name="title_activity_main_maps">Map</string>
-    <string name="sending_code">Sending the Code to the following number. If this is not your Phone Number then </string>
-    <string name="sent_code">We have sent a message containing a 6-digit code to </string>
+    <string name="sending_code">Sending the Code.\nTo edit number\n</string>
+    <string name="sent_code">Code sent.\nTo edit\n</string>
     <string name="edit_phone_number_link">Click here</string>
 
     <!--Maps Activity Screen-->
     <string name="GoogleMapsAPIKey">AIzaSyBgjC-PpCs_WxhZLyIt_vTeQlSX5kGy374</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -58,9 +58,8 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
     LoginManager manager;
     private AutoCompleteTextView firstname;
     private AutoCompleteTextView lastname;
-    private AutoCompleteTextView email;
-    //ImageView img;
-    //private TextView userGoogleDetails;
+    private AutoCompleteTextView mail;
+    ImageView img;
 
     public static String printKeyHash(Activity context) {
         PackageInfo packageInfo;
@@ -117,14 +116,15 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
         //............................Code for FB profile integration starts from here.....................................
 
         //Not sure why prefUtil was used.... will look into it
-        profilePictureView = findViewById(R.id.friendProfilePicture);
+        //profilePictureView = findViewById(R.id.friendProfilePicture);
         LoginButton loginButton = findViewById(R.id.login_button);
-        firstname=findViewById(R.id.editText_firstname);
+        //firstname=findViewById(R.id.editText_firstname);
         lastname=findViewById(R.id.lasttname_editText);
-        email=findViewById(R.id.email_edittxt);
+        //email=findViewById(R.id.email_edittxt);
         //userFacebookDetails = findViewById(R.id.userDetails);
-        //userGoogleDetails = findViewById(R.id.usergoogleDetails);
-        //img = findViewById(R.id.googleProfileImage);
+        firstname = (AutoCompleteTextView) findViewById(R.id.editText_firstname);
+        img = findViewById(R.id.img);
+        mail = (AutoCompleteTextView) findViewById(R.id.email_edittxt);
 
 
         //This line takes permission from fb user to get his name and email and profile photo
@@ -156,7 +156,7 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
                                         firstname.setText(facebookData.getString("first_name"));
                                         Log.d("firstname-->",facebookData.getString("first_name"));
                                         lastname.setText(facebookData.getString("last_name"));
-                                        email.setText(facebookData.getString("email"));
+                                        mail.setText(facebookData.getString("email"));
                                         //userFacebookDetails.setText(facebookData.getString("first_name") + " " + facebookData.getString("last_name") + "\n" + facebookData.getString("email"));
                                     }
                                 });
@@ -254,7 +254,9 @@ public class InitialProfileSetupScreen extends AppCompatActivity implements View
 
             // Signed in successfully, show authenticated UI.
             String name = account.getDisplayName();
+            firstname.setText(name);
             String email = account.getEmail();
+            mail.setText(email);
 
 
             updateUI(account);

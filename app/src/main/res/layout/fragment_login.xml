@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="top">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_button"
+                android:textSize="48sp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/login_instructions"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ccp_countryPreference="pk,usa"
+                    app:ccp_hintExampleNumber="true"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccpDialog_keyboardAutoPopup="true"
+                    android:layout_gravity="right"
+                    android:backgroundTint="@color/windowBackground"
+                    />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/activity_signin_phone_number_widget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:theme="@style/TextLabel">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/editText_carrierNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:inputType="phone"
+                        android:textColor="@color/windowBackground"
+                        android:singleLine="true"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/windowBackground"
+                android:text="@string/login_button"
+                android:textColor="@color/colorPrimaryDark"
+                android:elevation="10dp"
+                android:textSize="18sp"
+                android:padding="5dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

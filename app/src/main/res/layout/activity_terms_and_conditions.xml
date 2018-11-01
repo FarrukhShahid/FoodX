@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TermsAndConditionsActivity"
-    android:background="@color/white_grayish">
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/NewUser_TextView"
-        android:background="@color/light_blue">
+        android:background="@drawable/background">
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,30 +33,15 @@
 
                 <ImageView
                     android:id="@+id/Chef_uncle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/cheficon" />
-
-                <TextView
-                    android:id="@+id/Title_of_app"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/rounded_layouts"
-                    android:elevation="10dp"
-                    android:padding="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:text="FoodX"
-                    android:textAlignment="center"
-                    android:textColor="@color/pure_white"
-                    android:textSize="48sp"
-                    android:textStyle="bold"
-                    android:layout_below="@id/Chef_uncle"/>
+                    android:src="@drawable/foodx_logo"/>
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/Title_of_app"
+                    android:layout_below="@id/Chef_uncle"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="80dp"
                     android:layout_marginRight="20dp"
@@ -87,9 +72,9 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/dark_blue"
+            android:backgroundTint="@color/windowBackground"
             android:text="@string/getStartedButton"
-            android:textColor="@color/windowBackground"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/GetStarted_Button"
             android:textSize="18sp"
             android:onClick="GetStartedButton_click"/>

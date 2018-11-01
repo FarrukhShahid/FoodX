@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">@android:color/holo_green_light</color>
+    <color name="colorPrimaryDark">@android:color/holo_green_dark</color>
     <color name="colorAccent">#FF4081</color>
     <color name="blue_gray_light">#4169e1</color>
     <color name="button_blue">#2196f3</color>
@@ -15,4 +15,5 @@
     <color name="Red">#d90416</color>
     <color name="Dark_gray">#3E3E3E</color>
     <color name="white_grayish">#d90416</color>
+
 </resources>

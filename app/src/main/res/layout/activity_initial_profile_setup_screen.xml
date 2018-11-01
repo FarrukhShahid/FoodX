@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:facebook="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:background="@color/light_blue">
+    android:background="@color/windowBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,13 +29,18 @@
             android:id="@+id/profile_picture_setup"
             android:background="@color/light_blue">
 
-            <com.facebook.login.widget.ProfilePictureView
-                android:id="@+id/friendProfilePicture"
+            <!--<com.facebook.login.widget.ProfilePictureView-->
+                <!--android:id="@+id/friendProfilePicture"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_gravity="left"-->
+                <!--facebook:preset_size="small" />-->
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_gravity="left"
-                facebook:preset_size="small" />
+                android:id="@+id/img"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -63,17 +68,10 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/firstname_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingTop="0dp"
-                android:text="First Name"
-                android:textColor="@color/pure_white"
-                android:textSize="20dp" />
+
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/first_name_editext_widget"
@@ -84,6 +82,7 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/editText_firstname"
+                    android:hint="First Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"/>
@@ -98,7 +97,7 @@
                 android:paddingTop="0dp"
                 android:id="@+id/lastname_textview"
                 android:paddingLeft="20dp"
-                android:textColor="@color/pure_white"
+                android:textColor="@color/Red"
                 android:layout_below="@id/first_name_editext_widget" />
 
             <android.support.design.widget.TextInputLayout
@@ -125,7 +124,7 @@
                 android:paddingTop="0dp"
                 android:id="@+id/phone_textview"
                 android:paddingLeft="20dp"
-                android:textColor="@color/pure_white"
+                android:textColor="@color/Red"
                 android:layout_below="@id/last_name_edittext_widget"
                 />
             <android.support.design.widget.TextInputLayout
@@ -145,6 +144,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:layout_below="@id/phone_number_edittext_widget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
@@ -152,8 +152,8 @@
                 android:paddingTop="0dp"
                 android:id="@+id/email_txtveiw"
                 android:paddingLeft="20dp"
-                android:textColor="@color/pure_white"
-                android:layout_below="@id/phone_number_edittext_widget" />
+                android:textColor="@color/Red"
+                 />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/email_edittext_widget"
@@ -179,7 +179,7 @@
                 android:paddingTop="0dp"
                 android:id="@+id/password_txtveiw"
                 android:paddingLeft="20dp"
-                android:textColor="@color/pure_white"
+                android:textColor="@color/Red"
                 android:layout_below="@id/email_edittext_widget" />
 
             <android.support.design.widget.TextInputLayout

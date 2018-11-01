@@ -44,51 +44,67 @@
             android:textStyle="bold"
             android:layout_below="@id/ConfirmationText"
             android:textColor="@color/Red"/>
-        <LinearLayout
-            android:layout_width="350dp"
+        <ScrollView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_layouts"
-            android:layout_centerInParent="true"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:elevation="5dp">
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
+            android:layout_centerInParent="true">
+            <LinearLayout
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ConfirmationText"/>
+                android:orientation="vertical"
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/activity_verification_number_widget"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:theme="@style/TextLabel">
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:elevation="5dp">
+                <!--android:background="@drawable/rounded_layouts"-->
 
-                <AutoCompleteTextView
-                    android:id="@+id/ConfirmationNumber"
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Verification Code"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:textSize="18sp"/>-->
+
+                <LinearLayout
+                    android:id="@+id/activity_verification_number_widget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Verification code"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textSize="24sp"/>
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
 
-            </android.support.design.widget.TextInputLayout>
+                    <EditText
+                        android:id="@+id/ConfirmationNumber"
+                        style="@style/verificationEditTexts"/>
+                    <EditText
+                        android:id="@+id/ConfirmationNumber1"
+                        style="@style/verificationEditTexts"/>
+                    <EditText
+                        android:id="@+id/ConfirmationNumber2"
+                        style="@style/verificationEditTexts"/>
+                    <EditText
+                        android:id="@+id/ConfirmationNumber3"
+                        style="@style/verificationEditTexts"/>
+                    <EditText
+                        android:id="@+id/ConfirmationNumber4"
+                        style="@style/verificationEditTexts"/>
+                    <EditText
+                        android:id="@+id/ConfirmationNumber5"
+                        style="@style/verificationEditTexts"/>
+                </LinearLayout>
 
-            <Button
-                android:id="@+id/GetStarted_Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ConfirmationNumber"
-                android:text="@string/verify_button"
-                android:backgroundTint="@color/dark_blue"
-                android:textColor="@color/windowBackground"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="right"
-                android:onClick="Verify_code"/>
-        </LinearLayout>
+                <Button
+                    android:id="@+id/GetStarted_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_verification_number_widget"
+                    android:text="@string/verify_button"
+                    android:backgroundTint="@color/Red"
+                    android:textColor="@color/windowBackground"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:onClick="Verify_code"/>
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </RelativeLayout>
