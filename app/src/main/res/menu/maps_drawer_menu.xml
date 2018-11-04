@@ -3,7 +3,6 @@
     <item
         android:id="@+id/maps_drawer_menu_id"
         android:title="Dashboard"
-        android:actionLayout="@layout/list_cells"
         />
     <item
         android:id="@+id/maps_drawer_menu_event"
