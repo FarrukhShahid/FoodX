@@ -145,7 +145,7 @@ public class VerificationFragment extends Fragment {
             PhoneNumber = LoginFragment.Phone_number;
             Number_TextView.setText(PhoneNumber);
 
-            if (PhoneNumber == null){
+            if (PhoneNumber == null && SignInScreen.check){
                 Log.d(TAG,"number = null");
                 return;
             }
@@ -164,9 +164,9 @@ public class VerificationFragment extends Fragment {
             }
 
             update_instruction_string(sendingstr,linkstr);
-
-            send_code_message(PhoneNumber,getActivity());
-
+            if(SignInScreen.check) {
+                send_code_message(PhoneNumber, getActivity());
+            }
 
             //verify button click
             _view.findViewById(R.id.verifyButton).setOnClickListener(new View.OnClickListener() {
@@ -252,7 +252,10 @@ public class VerificationFragment extends Fragment {
     public void check_code_authenticity_and_start_activity(
             String id,
             String code) {
-
+        if (!SignInScreen.check) {
+            startActivity(new Intent(getActivity().getApplicationContext(), MainMapsActivity.class));
+            return;
+        }
         final PhoneAuthCredential c = PhoneAuthProvider.getCredential(id, code);
         mAuth.signInWithCredential(c).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
             @Override

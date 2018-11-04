@@ -28,18 +28,24 @@
     <!--Login Screen-->
     <string name="login_button">Login</string>
     <string name="login_instructions">Please confirm your country and enter your phone number</string>
+    <string name="login_screen_heading">Login</string>
 
     <!--Verification Screen-->
     <string name="verify_button">Verify</string>
+    <string name="verification_screen_heading">Verification</string>
     <string name="title_activity_main_maps">Map</string>
     <string name="sending_code">Sending the Code.\nTo edit number\n</string>
-    <string name="sent_code">Code sent.\nTo edit\n</string>
+    <string name="sent_code">Code sent. To edit </string>
     <string name="edit_phone_number_link">Click here</string>
 
     <!--Maps Activity Screen-->
-    <string name="GoogleMapsAPIKey">AIzaSyBgjC-PpCs_WxhZLyIt_vTeQlSX5kGy374</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--FoodX -> AIzaSyBgjC-PpCs_WxhZLyIt_vTeQlSX5kGy374-->
+    <!--Keepers -> AIzaSyBADVWJfyzanMea2dHc6Z-Hd0Dl0mWIKVc-->
+    <string name="GoogleMapsAPIKey">AIzaSyBADVWJfyzanMea2dHc6Z-Hd0Dl0mWIKVc</string>
+
+    <!--for maps drawer menu right-->
+    <string name="sell_food_text">To sell a food item</string>
+    <string name="buy_food_text">To buy a food item</string>
 
 </resources>

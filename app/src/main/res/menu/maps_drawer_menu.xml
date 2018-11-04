@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/maps_drawer_menu_id" android:title="Dashboard"/>
-    <item android:id="@+id/maps_drawer_menu_event" android:title="Event"/>
-    <item android:id="@+id/maps_drawer_menu_search" android:title="Search"/>
-    <item android:id="@+id/maps_drawer_menu_settings" android:title="Settings"/>
-    <item android:id="@+id/maps_drawer_menu_activities" android:title="Activities"/>
-    <item android:id="@+id/maps_drawer_menu_logout" android:title="Logout"/>
+    <item
+        android:id="@+id/maps_drawer_menu_id"
+        android:title="Dashboard"
+        android:actionLayout="@layout/list_cells"
+        />
+    <item
+        android:id="@+id/maps_drawer_menu_event"
+        android:title="Event"
+        android:icon="@drawable/rounded_layouts_2"/>
+    <item
+        android:id="@+id/maps_drawer_menu_search"
+        android:title="Search"
+        android:icon="@drawable/rounded_layouts_2"/>
+    <item
+        android:id="@+id/maps_drawer_menu_settings"
+        android:title="Settings"
+        android:icon="@drawable/rounded_layouts_2"/>
+    <item
+        android:id="@+id/maps_drawer_menu_activities"
+        android:title="Activities"
+        android:icon="@drawable/rounded_layouts_2"/>
+    <item
+        android:id="@+id/maps_drawer_menu_logout"
+        android:icon="@drawable/rounded_layouts_2"
+        android:title="Logout"
+        />
+
 </menu>

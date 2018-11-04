@@ -1,48 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<android.support.design.widget.CoordinatorLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:onClick="ProfileViewClick">-->
+
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="192dp"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+        <!--<android.support.design.widget.CollapsingToolbarLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--android:layout_width="match_parent"-->
+                <!--app:layout_collapseMode="pin"/>-->
+        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<ListView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:id="@+id/drawerListView"></ListView>-->
+        <!--</LinearLayout>-->
+    <!--</android.support.v4.widget.NestedScrollView>-->
+<!--</android.support.design.widget.CoordinatorLayout>-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="160dp"
-    android:background="@color/dark_blue"
-    android:padding="20dp"
-    android:elevation="50dp"
-    android:gravity="bottom">
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/cheficon"
-        android:onClick="ProfileViewClick"/>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Farrukh"
-            android:textSize="24sp"
-            android:id="@+id/Name"
-            android:textColor="@color/windowBackground"
-            android:onClick="ProfileViewClick"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4.62"
-            android:layout_below="@id/Name"
-            android:id="@+id/Rating"
-            android:textSize="18sp"
-            android:textColor="@color/windowBackground"
-            android:onClick="ProfileViewClick"/>
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="20dp"
+        android:gravity="bottom"
+        android:onClick="ProfileViewClick"
+        android:background="@drawable/background">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_toRightOf="@id/Rating"
-            android:layout_below="@id/Name"
-            android:src="@android:drawable/btn_star_big_on" />
-    </RelativeLayout>
+            android:layout_width="180dp"
+            android:src="@drawable/foodx_logo"
+            android:layout_height="100dp"
+            android:id="@+id/Drawer_Logo"/>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:id="@+id/LoggedInPersonPicture"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/com_facebook_profile_picture_blank_square"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Farrukh"
+                android:textSize="24sp"
+                android:id="@+id/Name"
+                android:textColor="@color/textColorPrimary"
+                android:layout_toRightOf="@id/LoggedInPersonPicture"
+                android:layout_above="@id/Rating"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.62"
+                android:id="@+id/Rating"
+                android:textSize="18sp"
+                android:textColor="@color/textColorPrimary"
+                android:layout_toRightOf="@id/LoggedInPersonPicture"
+                android:layout_alignParentBottom="true"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/Rating"
+                android:layout_below="@id/Name"
+                android:src="@android:drawable/btn_star_big_on" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        style="@style/standard_button"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/profile_pic"
+        android:elevation="5dp"
+        android:onClick="ProfileViewClick"
+        android:padding="20dp"
+        android:text="Profile" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Settings"
+        android:elevation="5dp"
+        android:drawableLeft="@drawable/settings_icon"
+        android:padding="20dp"
+        style="@style/standard_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Help"
+        android:elevation="5dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/help_icon"
+        style="@style/standard_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Logout"
+        android:drawableLeft="@drawable/logout_icon"
+        android:elevation="5dp"
+        android:padding="20dp"
+        style="@style/standard_button"/>
 </LinearLayout>

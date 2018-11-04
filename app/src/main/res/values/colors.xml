@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@android:color/holo_green_light</color>
+    <color name="colorPrimary">@android:color/holo_green_dark</color>
     <color name="colorPrimaryDark">@android:color/holo_green_dark</color>
     <color name="colorAccent">#FF4081</color>
     <color name="blue_gray_light">#4169e1</color>
     <color name="button_blue">#2196f3</color>
-    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorPrimary">@android:color/holo_orange_light</color>
+    <color name="textColorPrimaryHeadings">@android:color/white</color>
+    <color name="textColorPrimaryDarkHeadings">@android:color/holo_orange_dark</color>
+    <color name="textColorPrimaryDark">@android:color/holo_orange_dark</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
 

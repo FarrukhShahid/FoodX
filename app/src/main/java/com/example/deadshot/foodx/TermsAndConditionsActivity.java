@@ -2,6 +2,7 @@ package com.example.deadshot.foodx;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,14 +23,12 @@ import java.util.List;
 
 public class TermsAndConditionsActivity extends AppCompatActivity {
 
-    public static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    public static final int SMS_PERMISSION_REQUEST_CODE = 1235;
-    public static final int PHONE_NUMBER_PERMISSION_REQUEST_CODE = 1236;
-    public static final int INTERNET_PERMISSION_REQUEST_CODE = 1237;
+    public static final String TAG = "TermsAndConditionsActivity->>";
 
     private Context context = null;
 
     private CheckBox terms_checkBox = null;
+    public static boolean allPermissionsGranted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +39,12 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         terms_checkBox = findViewById(R.id.Terms_checkBox);
 
 
-
+        final Activity activity = this;
         terms_checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (terms_checkBox.isChecked()){
-                    getAllPermissions();
+                    getAllPermissions(activity);
                 }
             }
         });
@@ -57,7 +56,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Agree to the Terms and Conditions", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (getAllPermissions()){
+        if (getAllPermissions(this)){
             TelephonyManager mTelephonyMgr;
             mTelephonyMgr = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
 
@@ -75,13 +74,17 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
             Log.d("Actual Permissions",((Integer)permissions.length).toString());
             for (String permission : permissions) {
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    allPermissionsGranted = false;
+                    Log.d(TAG,"hasPermissions: "+permission.toString()+" not granted");
                     return false;
                 }
             }
         }
+        allPermissionsGranted = true;
+        Log.d(TAG,"hasPermissions: all permissions granted");
         return true;
     }
-    public Boolean getAllPermissions(){
+    public static Boolean getAllPermissions(Activity activity){
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
                 android.Manifest.permission.READ_SMS,
@@ -89,10 +92,10 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                 Manifest.permission.READ_PHONE_STATE,
         };
 
-        if(!hasPermissions(getApplicationContext(), PERMISSIONS)){
-            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+        if(!hasPermissions(activity.getApplicationContext(), PERMISSIONS)){
+            ActivityCompat.requestPermissions(activity, PERMISSIONS, PERMISSION_ALL);
         }
-        return hasPermissions(getApplicationContext(),PERMISSIONS);
+        return hasPermissions(activity.getApplicationContext(),PERMISSIONS);
     }
 
 }

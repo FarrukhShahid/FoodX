@@ -9,8 +9,21 @@
     tools:context=".MainMapsActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/maps_drawer_button_right"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/MainMapsBottomTray"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hapticFeedbackEnabled="true"
+            android:src="@drawable/cheficon"
+            android:textSize="18sp"
+            app:elevation="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,33 +32,34 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:elevation="5dp"
-            android:padding="15dp"
             android:orientation="horizontal"
-            android:background="@drawable/rounded_layouts_2"
+            android:background="@color/windowBackground"
             android:id="@+id/SearchTextViewLayout">
 
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:backgroundTint="@color/Red"
-                android:background="@drawable/three_lines_button"
-                android:focusable="true"
-                android:onClick="NavigationDrawerButtonClick"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
                 android:focusableInTouchMode="true"
-                android:id="@+id/maps_drawer_button"/>
+                android:focusable="true"
+                android:id="@+id/maps_drawer_button"
+                android:src="@drawable/three_lines_button"/>
 
             <AutoCompleteTextView
+                android:id="@+id/LocationSearchTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="@color/textColorPrimaryDark"
                 android:hint="Try Resturants, coffee"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
                 android:inputType="textAutoComplete"
                 android:singleLine="true"
-                android:textSize="16dp"
-                android:background="@null"
-                android:id="@+id/LocationSearchTextBox"
-                />
+                android:textSize="18dp" />
 
         </LinearLayout>
 
@@ -54,21 +68,34 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+
+        <fragment
+            android:name="com.example.deadshot.foodx.MainMapsBottomTrayFragment"
+            android:id="@+id/MainMapsBottomTray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            />
+
     </RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:background="@drawable/rounded_layouts_2"
+        android:id="@+id/maps_drawer_navigationView_right"
+        app:headerLayout="@layout/for_maps_drawer_menu_right" />
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/light_blue"
         app:itemTextColor="@color/Dark_gray"
         app:itemIconTint="@color/Dark_gray"
-        app:menu="@menu/maps_drawer_menu"
         android:layout_gravity="start"
         android:id="@+id/maps_drawer_navigationView"
         app:headerLayout="@layout/for_maps_drawer_menu">
-
-
-
     </android.support.design.widget.NavigationView>
-
 
 </android.support.v4.widget.DrawerLayout>

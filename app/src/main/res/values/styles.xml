@@ -37,8 +37,9 @@
         <item name="android:textSize">24sp</item>
         <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
         <item name="colorAccent">@color/windowBackground</item>
-        <item name="colorControlNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/textColorPrimary</item>
+        <item name="colorControlActivated">@color/textColorPrimary</item>
+        <item name="android:padding">10dp</item>
     </style>
 
 
@@ -57,5 +58,21 @@
         <item name="android:background">@drawable/rounded_layouts</item>
         <item name="android:layout_margin">6dp</item>
 
+    </style>
+
+    <style name="standard_button" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint">@color/windowBackground</item>
+        <item name="android:textColor">@color/textColorPrimaryDark</item>
+    </style>
+
+    <style name="standard_button_inv" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 </resources>
